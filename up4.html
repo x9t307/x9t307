@@ -1,0 +1,839 @@
+
+<!DOCTYPE html>
+<html>
+<style>
+    html {
+      background: rgb(12, 1, 78);
+      background-attachment: fixed;
+      color: #2, 12, 178;
+      background-image:
+      radial-gradient(65% 61% ellipse at center top, #320D38 5%, rgba(1,1,0,0) 73%),
+      radial-gradient(33% 32% ellipse at center bottom, #07012E 0%, #01222E 239%);      
+    }
+    
+    body {
+      color: #6cacc5;
+      font: 300 18px/1.6 "Source Sans Pro",sans-serif;
+      margin: 0;
+      padding: 5em 0 2em;
+      text-align: center;
+    }
+
+    .cRemot {
+      font-size: 16px;
+      margin: auto;
+      width: 5em;  
+    }
+    
+    @media (min-width: 320px) {
+      .cRemot {
+      width: 14em;
+      }
+      .cKany {
+      width: 2.5em;
+      }
+      button {
+      margin: 0.5em;
+      }
+    }
+    
+    .cReset {
+      position: absolute;
+        top: 2em;
+    }
+    
+    .cKany { 
+      border:0; background: rgb(0, 45, 90);  color: rgb(10, 145, 255); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 12em; height: 1.8em; transition: All 1.6s;  	  
+    }.cKany:hover { background: rgb(100, 0, 80); color: rgb(255, 255, 255) } 
+    
+	.cCal3 {        
+	  border: 0; background: rgb(1, 80, 67);  color: rgb(0, 255, 120);  
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 12em; height: 1.8em; transition: All 1.6s;  
+	   display:none;
+    }.cCal3:hover { background: rgb(100, 0, 80); color: rgb(255, 255, 255) } 
+	
+    .cView1 { //result click here ;      
+      color: RGB(255, 255, 255);  
+      //height: 2em;        //NS;
+      line-height: 0.8em;     //NS;  
+      text-align: right;      
+     // width: 5.5em;  
+      font-size:18px;
+    }
+    .cView2 { //result click here ;      
+      color: RGB(255, 0, 20);   
+      //height: 1em;        //NS;
+      line-height: 0.8em;     //NS;  
+      text-align: right;      
+      //width: 5.5em;  
+      font-size:18px;
+    }
+    .cView3 { //result click here ;      
+      color: RGB(2, 255, 200);  
+      //height: 1em;        //NS;
+      line-height: 0.8em;     //NS;  
+      text-align: right;      
+      //width: 5.5em;  
+      font-size:18px;
+    }
+    
+	.c3V{
+      border: 0; background: rgb(56, 185, 12);  color: rgb(46, 5,255);  
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;  
+    }.c3V:hover { background: rgb(100, 0, 80); color: rgb(255, 255, 255) } 
+
+	.c3S{
+      border: 0; background: rgb(156, 185, 221);  color: rgb(26, 20, 20); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;  
+    }.c3S:hover {background: rgb(100, 0, 80); color: rgb(255, 255, 255) } 	
+		
+	.c3C{
+      border: 0; background: rgb(250, 85, 12);  color: rgb(0, 0,0); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;  
+    }.c3C:hover {background: rgb(100, 0, 80); color: rgb(255, 255, 255)  } 
+	
+	.c3X{
+      border: 0; background: rgb(56, 85, 212);  color: rgb(186, 205, 0); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;  
+    }.c3X:hover {background: rgb(100, 0, 80); color: rgb(255, 255, 255) } 
+
+	.c3R{
+      border: 0; background: rgb(241, 25, 50);  color: rgb(255, 255, 250); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;  
+    }.c3R:hover {background: rgb(100, 0, 80); color: rgb(255, 255, 255)  } 
+	
+	.cA1{
+      border: 0; background: rgb(56, 65, 12);  color: rgb(250, 205, 0);  
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;  
+    }.cA1:hover {background: rgb(1, 125, 55);  }  
+	
+	.cA2{
+      border: 0; background: rgb(36, 15, 92);  color: rgb(156, 255, 0); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;  
+    }.cA2:hover { background: rgb(70, 15, 205);  }  
+	
+	.cFunc{
+      border: 0; background: rgb(80, 5, 12);  color: rgb(250, 0, 0); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;  
+    }.cFunc:hover {	color: rgb(0,0,0); background: rgb(100, 5, 32);  }  
+
+
+	.cScr {
+      border: 0;    background: rgb(0,30, 80);   color: rgb(10, 200, 250); 
+	  cursor: pointer; 
+	  float: left; 	  
+	  font: roman; 
+	  font-size : 18px;
+	  padding: 0em;	  
+	  margin: 0.28em; width: 15.9em; height: 1.5em; transition: All 1.6s;   
+	  text-align:center	  ; 	  
+	  display:none;
+    } 
+	
+	.cUrl {
+      border: 0;    background: rgb(90,5, 50);   color: rgb(150, 200, 250); 
+	  cursor: pointer; 
+	  float: left; 	  
+	  font: inherit; 
+	  margin: 0.25em; width: 11.7em; height: 1.5em; transition: All 1.6s;   
+	  text-align:center	  ; 
+	  display:none;
+    } 
+	
+	.cEql {
+      border: 0;     background: rgb(175,95, 35);   color: rgb(0, 250, 250); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;        
+    } .cEql:hover {	color: rgb(255,255,255);  background: rgb(35, 145, 120);    }
+	
+	.cOps {
+      border: 0;     background: rgb(130,95, 35);   color: rgb(0, 250, 250); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;        
+    } 
+	.cOps:hover {	color: rgb(0,0,0);  background: rgb(110, 0, 255);    }
+	
+    .cNum, .cClear{
+      border: 0;     background: rgb(26, 45, 122);   color: rgb(0, 150, 250); 
+	  cursor: pointer; float: left; font: inherit; margin: 0.25em; width: 2em; height: 2em; transition: All 1.6s;        
+    } .cNum:hover   {	  background: rgb(110, 0, 255);     }        
+	
+	.cClear:hover {	  background: rgb(110, 50, 0);     }        
+    button:focus {   color: rgb(255, 0, 50); background-color: rgb(200, 200, 200);    }  	
+    
+	button:focus:after {
+        animation: zoom 1s;
+        animation-iteration-count: 1;     
+        content: attr(anim1);	
+        cursor: default;
+        font-size: 100px;
+        color: #11D304;
+        position: absolute;
+           top: 3em;
+           left: 46%;
+        text-align: center;
+        margin-left: -24px;
+        opacity: 0;
+        width: 48px;    
+     }
+
+	
+     /* Same as above, modified for operators */
+    .cOps2del:focus::after {
+      content: attr(data-opscontoh);
+      //margin-left: -210px;
+      //width: 420px;
+    }
+
+  
+     /* Animations */
+     /* Values that appear onclick */
+    @keyframes zoom {
+      0% { 
+        transform: scale(2.2); 
+        opacity: 1;   
+      }     
+      70% { 
+        transform: scale(1); 
+        top: 0em;
+      }     
+      100% { 
+        opacity: 0;
+      }
+    }
+	
+	.cFunc.Fact9 {
+	  background: rgb(250, 25, 120);	
+	  color: rgb(250, 255, 255);
+	  font-style: italic;
+	}.cFunc.Fact9:hover {color: rgb(18, 250,0 ); background: rgb(250, 25, 20);  	}  
+	
+	.bview{
+      border: 1; background: rgb(155, 155, 155);  color: rgb(250, 0, 0); 
+	  cursor: pointer; float: left;  margin: 0.25em; width: 4em; height: 1.5em; transition: All 1.6s;  
+	  font: inherit; font-size:22px;
+    }
+	.bv{ display:none; }
+
+</style>
+<body>
+  <div id="iRemot" class="cRemot">
+	
+	<button class="cFunc" id="iF1" >F1</button>
+	<button class="cNum">1</button>
+	<button class="cNum">2</button>
+	<button class="cNum">3</button>
+	<button class="cFunc" id="iTx">Tx</button> 
+
+	<button class="cFunc" id="iF2" >F2</button> 
+	<button class="cNum">4</button>	
+	<button class="cNum">5</button>
+	<button class="cNum">6</button>  
+	<button class="cFunc" id="iBp">bP</button>    	
+
+   <button class="cFunc" id="iF4" >F4</button>
+   <button class="cNum">7</button>
+   <button class="cNum">8</button>
+   <button class="cNum">9</button>
+   <button class="cOps" id="iPlus" value=0 >+</button> 
+   
+   <button class="cFunc" id="iF8">F8</button> 	
+   <button class="cNum">.</button>   
+   <button class="cNum">b-</button>    
+   <button class="cNum">0</button>  
+   
+   <button class="cOps" data-ops="dvid" >/</button>
+  
+   <button class="cFunc" id="iFx" value=0 >fx</button>   
+   <button class="cOps" >-</button> 
+   <button class="cOps" id="iClear">.C</button>  
+	  
+   <button class="cOps" >*</button>  
+   <button class="cEql" id="iSdgn" >=</button>
+   	
+	<button class="cKany"  id="iKany"  >0</button>   	
+	<button class="cCal3" id="iCal3" style="display:block;" name="nCal3" >0</button>   		
+	<input class="cUrl" type="text" id="iUrl1" placeholder=" addrest Esp:" 			   onfocus="fTextAdd(1)"  name="1">
+	<input class="cUrl" type="text" id="iUrl2" placeholder=" example: //191.163.40.1"  onfocus="fTextAdd(2)"  value="http://192.168.0.102/">
+  
+	<input class="cScr" type="text" id="iScr1" placeholder="[F4+F8 Tx+1-6 Script1]>5chr" onfocus="fTextAdd(1)"  value="" name="1" />
+	<input class="cScr" type="text" id="iScr2" placeholder="[F4+F8 Tx+1-6 Script2]>5chr" onfocus="fTextAdd(2)"  value="" name="2" />
+	<input class="cScr" type="text" id="iScr3" placeholder="[F4+F8 Tx+1-6 Script3]>5chr" onfocus="fTextAdd(1)"  value="" name="3" />
+	<input class="cScr" type="text" id="iScr4" placeholder="[F4+F8 Tx+1-6 Script4]>5chr" onfocus="fTextAdd(2)"  value="" name="4" />
+	<input class="cScr" type="text" id="iScr5" placeholder="[F4+F8 Tx+1-6 Script5]>5chr" onfocus="fTextAdd(1)"  value="" name="5" />
+	<input class="cScr" type="text" id="iScr6" placeholder="[F4+F8 Tx+1-6 Script6]>5chr" onfocus="fTextAdd(2)"  value="" name="6" />
+
+	<script type="text/javascript">				
+		function fTextAdd(pr1) {			
+			if ( pr1 == 1) { iUrl1.name = "1" ; }
+			if ( pr1 == 2) { iUrl1.name = "2"  ;}
+			iKany.innerHTML = iUrl1.name;
+			//var yTadr = iUrl1.value + iUrl2.value ;
+			//alert("Your Dst ip.address or Web_Url: \n"   + yTadr + "\n\n example: \n www.TargetWebAddress.com \n or  //191.168.10.200" );
+		}
+	</script>
+			
+   <button class="cA1" id="iAa">a</button>
+   <button class="cA2" id="iBb">b</button>
+   <button class="cA1" id="iCc">c</button>
+   <button class="cA2" id="iDd">d</button>
+   <button class="cA1" id="iEe">e</button>
+
+   <button class="cA2" id="iFf">f</button>
+   <button class="cA1" id="iGg">g</button>
+   <button class="cA2" id="iHh">h</button>
+   <button class="cA1" id="iIi">i</button>
+   <button class="cA2" id="iJj">j</button>
+
+   <button class="cA1" id="iKk">k</button>
+   <button class="cA2" id="iLl">l</button>
+   <button class="cA1" id="iMm">m</button>
+   <button class="cA2" id="iNn">n</button>
+   <button class="cA1" id="iOo">o</button>
+
+   <button class="cA2" id="iPp">p</button>
+   <button class="cA1" id="iQq">q</button>
+   <button class="cA2" id="iRr">r</button>
+   <button class="cA1" id="iSs">s</button>
+   <button class="cA2" id="iTt">t</button>
+
+   <button class="cA1" id="iUu">u</button>
+   <button class="cA2" id="iVv">v</button>
+   <button class="cA1" id="iWw">w</button>
+   <button class="cA2" id="iXx">x</button>
+   <button class="cA1" id="iYy">y</button>
+   
+   <button class="cA2" id="iZz">z</button>
+   <button class="cA1" id="i!_">!</button>
+   <button class="cA2" id="i@&">@</button>
+   <button class="cA1" id="i#(">#</button>
+   <button class="cA2" id="i%)">%</button>
+   
+   <button class="cA1" id="i?/">,</button>
+   <button class="cA2" id="i~`">`</button>
+   <button class="cA1" id="i:;">;</button>
+   <button class="cA2" id="i[]">]</button>
+   <button class="cA1" id="iaA" style="color:rgb(255,255,255);" >Aa</button>
+   
+   
+   <div class="bv" >
+   <button class="bview" id="V1">V1</button> 
+	<button class="bview" id="V2">V2</button> 
+	<button class="bview" id="V3">V3</button> 
+	<button class="bview" id="V4">V4</button> 
+	<button class="bview" id="V5">V5</button> 
+	<button class="bview" id="F0">0</button> 
+	
+   	<button class="bview" id="iView1" >V1</button> 
+	<button class="bview" id="iView2" >V2</button> 
+	<button class="bview" id="iView3">V3</button> 
+	<button class="bview" id="iView4">V4</button> 
+	<button class="bview" id="iView5">V5</button> 
+	<button class="bview" id="iView6">V6</button> 	
+	</div>
+	
+   <button class="c3V" id="i3v" >V+</button>   
+   <button class="c3S">S+</button>
+   <button class="c3C">C+</button>
+   <button class="c3X">+X</button>
+   <button class="c3R">>|</button>
+   
+   <button class="c3V">Vm</button>   
+   <button class="c3S">Sn</button>
+   <button class="c3C">Ch</button>
+   <button class="c3X">Go</button>
+   <button class="c3R">II</button>
+   
+   <button class="c3V">V-</button>   
+   <button class="c3S">S-</button>
+   <button class="c3C">C-</button>
+   <button class="c3X">-X</button>
+   <button class="c3R">R.</button>
+    
+   <br><br>  
+   
+   <br><br> 
+   <br><br>
+  
+</div>
+
+<script> 
+
+var nClass ="",  nCls="", xFv9=0 , vTout=0, xAa=0	 ; 	
+
+var el = function(element) {
+  if (element.charAt(0) === "#") { // If passed an ID...
+	return document.querySelector(element); // ... returns single element
+  }
+   return document.querySelectorAll(element); // Otherwise, returns a nodelist
+};
+var nBut= el("button"); // element utama jadi tidak pakai tanda titik . sebagai class atau id
+var nInp= el("input"); // 
+
+for (i = 0; i < nBut.length; i++) { nBut[i].style.opacity="0" } //all button
+function fTout9() {	for (i = 0; i < nBut.length; i++) {nBut[i].style.opacity="1"; }	; }		
+setTimeout(function() {fTout9();} ,400   );
+
+loop1("nBut","cK","0") ; setTimeout(function() {loop1("nBut","cK","none"); iKany.style.opacity="0" ;} ,450 );
+loop1("nBut","cA","0") ; setTimeout(function() {loop1("nBut","cA","none"); iAa.style.opacity="0"   ;} ,450 );
+loop1("nBut","c3","0") ; setTimeout(function() {loop1("nBut","c3","none"); i3v.style.opacity="0"   ;} ,450 );
+loop1("nInp","cU","0") ; setTimeout(function() {loop1("nInp","cU","none");} ,450 );
+
+function loop1(pr0,pr1,pr2){ 	
+	var vElic = pr0+"[i].className";
+	var vE7="";	// this var local here only
+	var vElnt = pr0+".length";
+	for (i = 0; i < eval(vElnt); i++) {						
+		nClass = eval(vElic) ;  nCls = nClass.substr(0,2);			
+		if (nCls == pr1){ 
+			var vOpa = pr0 + "[i].style.opacity='0'"
+			if ( vTout == 0 ) { //antisipasi fast click show/hide
+				if ( pr2 == "none" ){ vE7 = pr0 + "[i].style.display='none'" ; } 			}
+			if ( pr2 == "block"){ vE7 = pr0 + "[i].style.display='block'"; }
+			if ( pr2 == "1"    ){ vE7 = pr0 + "[i].style.opacity='1'"    ; }
+			if ( pr2 == "0"    ){ vE7 = pr0 + "[i].style.opacity='0'"    ; }
+			eval(vE7) ;			
+		}
+	} 
+}
+
+var getSVR = "~-100"
+
+///////////////// Start ESP32 /////
+  setInterval( function() {getvar();} ,300 )  //send replay arBm() if resultnya (-2) data yg disend sdh diterima server    
+  function getvar() { 
+    iView3.innerHTML = getSVR.substr(1);                                            
+    var ivr3 = parseInt(iView3.innerHTML);           // convert object.id.arval1 to variable xvr1               
+    if ( ivr3 >= 0  ) {  
+      iView4.innerHTML = ivr3 ; 
+      iView1.innerHTML = ivr3 ; 
+      iView2.innerHTML = " OK!: "+ ivr3 ; 
+    }   
+  }
+  
+  function iwait(kei) { 		
+		var xSok = 0;
+		if (event.currentTarget.className.includes("c3")) { xSok = 1 ;}
+		if (kei=="Tx") { xSok = 1 ;}		
+		if (kei.length == 1) { xSok = 1; }		
+		if (xSok == 0) {return;}
+		
+		var yS1="";
+		if (xFv9==10){ yS1="J";} if (xFv9==11){ yS1="K";} if(xFv9==12){yS1="L";} if(xFv9==13){yS1="M";} if(xFv9==14){yS1="N";} if(xFv9==15){yS1="O";}
+		if (xFv9 <10){ yS1=xFv9.toString() } 
+		var kei2 = kei;
+		kei = yS1+kei;	
+		if  ( kei2=="8R." ) { //F8+R.
+			if (kei2=="1" && iScr1.value.length > 4 ) { kei = iScr1.value; } 
+			if (kei2=="2" && iScr2.value.length > 4 ) { kei = iScr2.value; } 
+			if (kei2=="3" && iScr3.value.length > 4 ) { kei = iScr3.value; } 
+			if (kei2=="4" && iScr4.value.length > 4 ) { kei = iScr4.value; } 
+			if (kei2=="5" && iScr5.value.length > 4 ) { kei = iScr5.value; } 
+			if (kei2=="6" && iScr6.value.length > 4 ) { kei = iScr6.value; } 	
+			//if (kei.length > 4  ) { fSv1(); } 
+		}
+		
+        iView4.innerHTML =  "  Wai4t..."; 
+        iView2.innerHTML =  "  Wai2t..."+kei ; 
+        if (kei == -100 ) { iView1.innerHTML = "-100" ; }//clear
+		iView1.innerHTML = "-100" ; 
+        var ivr1 = iView1.innerHTML ; 
+        var ipr1 = parseInt(ivr1);          
+    if (ipr1 <= 5000 ) {   //if still > 5000 (old requ. give info waiting)
+          arF2(kei); //kei is 1...0             
+          iView1.innerHTML = parseInt(kei) + 5000 ; // for waiting with 5001..9
+        } else {
+          var ipx1 = (ipr1 - 5000);     
+          iView2.innerHTML=  kei + ", Wai2tFor: "+ ipx1;           
+        }
+    }	
+	
+	
+	function arFnGet(keyx) { waitA(keyx); var xhttp = new XMLHttpRequest(); xhttp.onreadystatechange = function() { if (this.readyState == 4 && this.status == 200) { iView3.innerHTML =  this.responseText;   }  };
+							xhttp.open("GET", "arB"+keyx, true);  xhttp.send(); }
+	var yRepo="";	
+	
+	
+	function arF2(keyx) { 				
+		if (iBp.value == 0) {
+			if (iCal3.innerHTML.includes("Wait")){
+				alert("Alert! device not Found!  " + keyx + " not Send, \n the LastKey have no Replay from device \n Clear Wait message by clik the wait message \n then click any key to send data again \n You Can Click bP to Bypass This Alert    " );
+				return;
+			}
+		}
+		iCal3.innerHTML = keyx + " : Wait from Device "	;
+		if (iCal3.name.includes("e~")) {iCal3.innerHTML = " Getting.. Epprom Device " ; return;}
+		fSend2CL(keyx);
+	}
+	
+	function fSend2CL(pr1)	{	 
+			window.AppInventor.setWebViewString("*"+pr1);
+	}
+	//jika ingin menggunakan $.ajax jquery harus ada file(link) librarynya
+
+	
+	function yfSend2CL(pr1)	{	 
+		var yUrlSvr= iUrl1.value + iUrl2.value  ; 
+		var data1=pr1;  var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() { 
+				if (this.readyState == 4 && this.status == 200) { yRepo=this.responseText; fGetDev(yRepo);  }  
+		};		
+		xhttp.open("Get", yUrlSvr+"A?id="+data1 , true);
+		xhttp.send(null); 
+		window.AppInventor.setWebViewString("YY");
+	}	
+	
+	function xfSend2CL(pr1)	{	 
+		var yUrlSvr= iUrl1.value + iUrl2.value  ; 
+		var data1=pr1;  var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() { 
+				if (this.readyState == 4 && this.status == 200) { yRepo=this.responseText; fGetDev(yRepo);  }  
+		};		
+		xhttp.open("POST", yUrlSvr+"A" , true); 						
+		xhttp.send(data1); 
+	}	
+	//jika ingin menggunakan $.ajax jquery harus ada file(link) librarynya
+	
+	function fGetDev(pr1) {		
+		//var pr2=pr1.substr(0,3);		
+		if ( pr1.includes("GetEe") ) { iCal3.name = "Ae~"; //here2kali
+				//iCal3.innerHTML = "Loading Eprom " + iCal3.name + " fr Dev " ;
+				setTimeout(function(){ fSend2CL("~EeA"); },500);
+		}		
+		
+		if ( !pr1.includes("~") ) { iCal3.innerHTML= "Sucses: " + pr1; return} //normal (non eprom req)
+		//if ( pr2.includes("~")  ) { iCal3.innerHTML = "Loading eEprom " + Pr2 + " .Dev " ;}
+		
+		var pr2=pr1.substr(0,3); // 3 char pertama diambil sbgi identitas
+		
+		if ( pr2.includes("~")  ) { iCal3.innerHTML = "Loading eEprom " + pr2 ; }
+		var xElth = pr1.length;
+		
+		if ( pr2 == "Ae~") { if(xElth > 4) {iScr1.value=pr1;} else {iScr1.value="";} setTimeout(function(){ fSend2CL("~EeB"); },500); };		
+		if ( pr2 == "Be~") { if(xElth > 4) {iScr2.value=pr1;} else {iScr2.value="";} setTimeout(function(){ fSend2CL("~EeC"); },500); }
+		if ( pr2 == "Ce~") { if(xElth > 4) {iScr3.value=pr1;} else {iScr3.value="";} setTimeout(function(){ fSend2CL("~EeD"); },500); }
+		if ( pr2 == "De~") { if(xElth > 4) {iScr4.value=pr1;} else {iScr4.value="";} setTimeout(function(){ fSend2CL("~EeE"); },500); }
+		if ( pr2 == "Ee~") { if(xElth > 4) {iScr5.value=pr1;} else {iScr5.value="";} setTimeout(function(){ fSend2CL("~EeF"); },500); }		
+		if ( pr2 == "Fe~") { if(xElth > 4) {iScr6.value=pr1;} else {iScr6.value="";}  iCal3.innerHTML= "Sucses! See F4+F8+fx " ; iCal3.name=""; }
+		
+	}
+	
+	
+            
+  ///////////////// end ESP32 /////
+  (function() {
+    
+    var vNums = el(".cNum"), // List of numbers	  
+      cHitg = el(".cOps"), // List of operators
+      theNum = "", // Current number
+      oldNum = "", // First number
+      resultNum=0, // Result
+      operator; // 
+	  
+    var setNum = function() {
+      if (resultNum) { // If a result was displayed, reset number
+        theNum = this.getAttribute("data-num");
+        resultNum = "";
+      } else { // Otherwise, add digit to previous number (this is a string!)
+        var xNum = this.getAttribute("data-num");
+        theNum += xNum;
+        iwait(xNum);
+      }
+      iKany.innerHTML = theNum; // Display current number
+    };
+    // If NaN or Infinity returned
+      if (!isFinite(resultNum)) {
+          if (isNaN(resultNum)) { // If result is not a number; set off by, eg, double-clicking operators
+          resultNum = "Error!";
+          } else { // If result is infinity, set off by dividing by zero
+          resultNum = "what..";       
+          }
+    };
+
+    var setN2 = function(elNum) { 		
+		theNum += elNum;		
+		iKany.innerHTML = theNum; // Display current number
+    };
+	/* The click events */
+	
+	function fTx(pr1) {
+		var yUrlSv =  iUrl1.value + iUrl2.value;
+		if ( yUrlSv.length < 5 ) { 
+			yUrlSv =" Error! : Empty or Less than 6 Char "; iTx.className ="cFunc"; iTx.value = 0 ; return 			
+		}
+		if (iTx.value==1) {
+			if ( pr1 == "Tx" ) { alert("Device ip address : \n\n"   + yUrlSv + "\n\n example:  http://191.162.0.1/" ); }			
+			iwait(pr1)
+		} else { iCal3.innerHTML ="0"; }
+	}
+	
+    // Add click event to numbers	
+	var fOnCl2 = function() {
+		if (this.id == "iKany"	) { iKany.innerHTML="";}
+		if (this.id == "iKany2"	) { iKany2.innerHTML="0";}
+		var Key2 = this.innerHTML
+		var Cls2 = this.className;
+		if (Key2 == "b") {location.reload();}
+		
+		if ( Key2.includes("Wait") && this.id=="iCal3" ) {iCal3.innerHTML="" ; return; }
+		this.setAttribute("anim1",Key2); 	
+		
+		iKany.innerHTML  += (Key2+"'"); //any key show				
+		if (iKany.innerHTML.length >= 24 ) {  iKany.innerHTML = iKany.innerHTML.substr(Key2.length+1,23);  };
+		
+		if (this.id == "iaA") { xAa = xAa + 1; fAa(xAa); if (xAa > 1 ) {xAa = 0;} return;  }	//letter upper alphabet			
+		if (Cls2.includes("cFunc")) { fF16(Key2) }		
+	////////////////// All F function cFunc							
+		if (Key2 !=="fx" ) { iFx.className ="cFunc"; iFx.value = 0}	
+	
+	////////////////// F2				
+		if (xFv9 == "2") {			
+				if (iUrl1.style.opacity == "1" && Key2 !== "fx") { iFx.value = 1 ; iFx.className  += " Fact9" ; iUrl1.disabled=false; iUrl2.disabled=false ;  } //auto active fx
+				if (iUrl1.style.opacity == "0" && Key2 !== "fx") { iFx.value = 0 ; iFx.className   = "cFunc"  ; } //auto norm fx
+			if (Key2 == "fx") {
+				//if (xFv9 == 3 && Key2 == "fx" && iUrl1.style.opacity == "1" ) {
+				if (iUrl1.style.opacity == "1" ) {
+						loop1("nInp","cU","0")    ; vTout=0; setTimeout(function() {loop1("nInp","cU","none");} ,1400 ); //hide
+				} else {
+						loop1("nInp","cU","block"); vTout=1; setTimeout(function() {loop1("nInp","cU","1")   ;} ,20  ); //show 							
+				}
+			}			
+			if (iUrl1.style.opacity == "1" )  {		
+				if (Cls2  == "cA1" 	) {fTadd(Key2);}
+				if (Cls2  == "cA2"	) {fTadd(Key2);}
+				if (Cls2  == "cNum" ) {fTadd(Key2);}
+				if (Cls2  == "cOps" ) {fTadd(Key2);}
+				return;
+			} 
+		}	
+		if (xFv9 !== "2" && iUrl1.style.opacity == "1" ) { iUrl1.disabled=true; iUrl2.disabled=true ; }	
+	
+	////////////////// F4+F8
+			if (xFv9 == "12") {	
+					if (iKany.style.opacity == "1" && Key2 !== "fx") { iFx.value = 1 ; iFx.className  += " Fact9" ; } //auto active fx
+					if (iKany.style.opacity == "0" && Key2 !== "fx") { iFx.value = 0 ; iFx.className   = "cFunc"  ; } //auto norm fx
+				if (Key2 == "fx") {					
+					if ( iScr1.style.opacity == "1" ) {
+						loop1("nInp","cS","0")    ; vTout=0; setTimeout(function() {loop1("nInp","cS","none");} ,1400 ); //hide
+					} else {
+						loop1("nInp","cS","block"); vTout=1; setTimeout(function() {loop1("nInp","cS","1")   ;} ,20  ); //show 	
+					}					
+				}				
+			}			
+	////////////////// F1
+			if (xFv9 == "1") {	
+					if (iKany.style.opacity == "1" && Key2 !== "fx") { iFx.value = 1 ; iFx.className  += " Fact9" ; } //auto active fx
+					if (iKany.style.opacity == "0" && Key2 !== "fx") { iFx.value = 0 ; iFx.className   = "cFunc"  ; } //auto norm fx
+				if (Key2 == "fx") {					
+					if ( iKany.style.opacity == "1" ) {
+						loop1("nBut","cK","0")    ; vTout=0; setTimeout(function() {loop1("nBut","cK","none");} ,1400 ); //hide
+					} else {
+						loop1("nBut","cK","block"); vTout=1; setTimeout(function() {loop1("nBut","cK","1")   ;} ,20  ); //show 	
+					}					
+				}				
+			}			
+	////////////////// F4							
+			if (xFv9 == "4") {	
+					if (iAa.style.opacity == "1" && Key2 !== "fx") { iFx.value = 1 ; iFx.className  += " Fact9" ; } //auto active fx
+					if (iAa.style.opacity == "0" && Key2 !== "fx") { iFx.value = 0 ; iFx.className   = "cFunc"  ; } //auto norm fx
+				if (Key2 == "fx") {					
+					if ( iAa.style.opacity == "1" ) {
+						loop1("nBut","cA","0")    ; vTout=0; setTimeout(function() {loop1("nBut","cA","none");} ,1400 ); //hide
+					} else {
+						loop1("nBut","cA","block"); vTout=1; setTimeout(function() {loop1("nBut","cA","1")   ;} ,2  ); //show 						
+					} return;												
+				}	
+			}
+	//////////////////	F8
+			if (xFv9 == "8") {	
+					if (i3v.style.opacity == "1" && Key2 !== "fx") { iFx.value = 1 ; iFx.className  += " Fact9" ; } //auto active fx
+					if (i3v.style.opacity == "0" && Key2 !== "fx") { iFx.value = 0 ; iFx.className   = "cFunc"  ; } //auto norm fx
+				if (Key2 == "fx") {					
+					if ( i3v.style.opacity == "1" ) {
+						loop1("nBut","c3","0")    ; vTout=0; setTimeout(function() {loop1("nBut","c3","none");} ,1400 ); //hide
+					} else {
+						loop1("nBut","c3","block"); vTout=1; setTimeout(function() {loop1("nBut","c3","1")   ;} ,2  ); //show 						
+					}	return;			
+				}							
+			}
+	////////////////// Tx									
+		if (Key2=="Tx")     { fTx(Key2)  ; return} //check url 
+		if (iTx.value == 1) { iwait(Key2) ; return} //send data to url
+	//////////////////
+			
+		chkKeyCal(Key2);		
+		if (Cls2 == "cEql"       ) {fSdgn(Key2)}
+		
+	}	
+	
+	function fAa(pr1){ 	//letter or upper
+			for (i = 0; i < nBut.length; i++) {				
+				var nEl = nBut[i];  var nCls = nBut[i].className.substr(0,2);										
+				if (nCls == "cA" )  {	//ganti lower/upper						
+					if ( pr1 == 1) {nEl.innerHTML = nEl.id.substr(1,1); } else {nEl.innerHTML = nEl.id.substr(2); } 
+	}		}	} //"iAa" tobe "a" //"iAa" tobe "A" 	
+	
+	function fTadd(pr1) {				
+		if  (iUrl1.name=="1") { 			
+			if ( pr1 == "b-" ) {iUrl1.value = iUrl1.value.substr(0,iUrl1.value.length - 1) } else { iUrl1.value= iUrl1.value + pr1; }
+			if ( pr1 == ".C" ) {iUrl1.value = "" }
+		}
+		if  (iUrl1.name=="2") { 
+			if ( pr1 == "b-" ) {iUrl2.value = iUrl2.value.substr(0,iUrl2.value.length - 1) } else { iUrl2.value= iUrl2.value + pr1; }
+			if ( pr1 == ".C" ) {iUrl2.value = "" }
+		}
+	}
+	
+	function chkKeyCal(pr1) {
+		var ySCLn2 = iCal3.innerHTML.length		
+		if ("b-" == pr1)  { //del char
+			if (ySCLn2 == 1) {iCal3.innerHTML=""} else {iCal3.innerHTML  = iCal3.innerHTML.substr(0,ySCLn2-1)} //calcu del			
+		}		
+		if ( iCal3.style.opacity == "1" ) { fCalcu1(pr1); }		
+	}
+	
+	function fCalcu1(pr1) {
+	//enter to numeric processing
+		var ySCLih = iCal3.innerHTML;		
+		if (ySCLih.includes("=") ) { iCal3.innerHTML="" } //empty if there are = then insert new entry num		
+		var xSCnum = parseInt(pr1)
+		if (xSCnum >= 0) {
+			iCal3.innerHTML  += pr1;	// assign  numeric		
+		}
+		if ("+-*/.".includes(pr1))  {
+			iCal3.innerHTML  += pr1;	//assign operation sign 		
+		} 			
+		ySCLih = iCal3.innerHTML;
+		var ySCLn2 = ySCLih.length;		
+		if ( ! "=+-*/".includes(pr1))  {			
+			if (ySCLn2 ==2 ) { //08 -> 8, but 0.8 notproses				
+				if ( (ySCLih.substr(0,1) == "0") && (ySCLih.substr(1,1) !== ".")  ) {
+					iCal3.innerHTML = xSCnum * 1; 
+		}	}	} 
+		if ( "+-*/".includes(ySCLih.substr(0,1)) )  {iCal3.innerHTML=0;} //if first char =+/*- then 0			
+		
+		ySCLih = iCal3.innerHTML; //cut text if too long
+		if (iCal3.innerHTML.length >=15) { iCal3.style.color="rgb(255,255,0)";} else {iCal3.style.color="rgb(30,235,185)";} //red if yelolow > 15
+		if ( ySCLih.length >= 19 ) { iCal3.innerHTML = ySCLih.substr(1,18); iCal3.style.color="rgb(0,0,0)" } //black =cut 1 char	
+	}
+
+	function fSdgn(pr1) {	
+		if (iTx.value == 1) {  			
+			if ( iCal3.style.opacity == "0" ) { iCal3.style.display = "block" ; iCal3.style.opacity= "0"  ;	setTimeout(function() {iCal3.style.opacity= "1";} ,100   ) }/*Calc Posisi then-> Show slow*/ 					
+			else  { iCal3.style.opacity = "0" ; setTimeout(function() {iCal3.style.display= "none";} ,1400 ) }/*calc hide then-> none*/	
+			return;	
+		}
+		iKany.innerHTML="";
+		var xSerr=0;
+		var xSpos=0;
+		var xSmore=0; var ySih1="";
+		var yOps="/*+-";
+		var ySCLih = iCal3.innerHTML;
+		var ySCLn2 = ySCLih.length;
+		var ySget1="", ySget2="", ySget3="";
+				
+		for (var i = 0, l = ySCLn2; i < l ; i++){
+				ySih1 = ySCLih.substr(i,1);
+				if ( "/*+-".includes(ySih1) ) {
+					xSpos = i+1;
+					xSmore++;
+					ySget2 = ySih1;
+				}
+				iKany.innerHTML += ySih1;
+		}		
+		if ( xSpos == ySCLn2 || xSmore !== 1  ) {
+			iKany.innerHTML =   "err! = P:"+xSpos  +" M:"+xSmore  +" L:"+ySCLn2;
+			xSerr = 1;
+		}
+		if ( xSerr == 0) {
+			ySget1 = ySCLih.substr(0,xSpos-1); //BEFOR OPS
+			ySget3 = ySCLih.substr(xSpos); //after ops
+			//iCal3.innerHTML = ySget1 + " , " + ySget2 + " , " + ySget3   ;			
+			var xSrslt = 0;
+			if (ySget2 == "+") { xSrslt = parseFloat(ySget1) + parseFloat(ySget3) ;}
+			if (ySget2 == "-") { xSrslt = parseFloat(ySget1) - parseFloat(ySget3) ;}
+			if (ySget2 == "*") { xSrslt = parseFloat(ySget1) * parseFloat(ySget3) ;}
+			if (ySget2 == "/") { xSrslt = parseFloat(ySget1) / parseFloat(ySget3) ;}			
+			//alert(xSrslt.toString().length);
+			if (xSrslt.toString().length > 17) { iKany.innerHTML="err! = >17";} else {iCal3.innerHTML = "= " + xSrslt;}
+		}
+	}
+	
+	for (var i = 0, l = nBut.length; i < l; i++) {
+      nBut[i].onclick = fOnCl2; //onclick all a button	  	 
+    }
+    // Add click event to operators
+
+	function fClrSnd(){ 
+		var Cs2=event.currentTarget;
+		//var Bv2 = document.getElementByClassName("bview");
+		if (Cs2.value == "0") {
+			Cs2.value = "1"			
+			//Bv2.style.display= "none"
+			location.reload();
+			document.getElementsByClassName("bv")[0].style.display= "none";
+		} else  { Cs2.value = "0"
+			//Bv2.style.display= "block"
+			document.getElementsByClassName("bv")[0].style.display= "block";
+		}	
+		//alert(Cs2.value);
+	}
+	
+	function fF16(pr1) {  //all cFunc, create code binary8421 to decimal from 0-16 for F? function	and make active(pink) button			
+		let vFnow = event.currentTarget;		
+		var FcAct = vFnow.className;	
+		if (FcAct.includes(" Fact9") ) { 		
+			vFnow.className ="cFunc"; 		// make deactivated							
+			vFnow.value = 0;
+		} else {			
+			vFnow.className += " Fact9"; 	//make activeated			
+			vFnow.value = 1; 	//make activeated			
+		}
+		xFv9 = 0;
+		if (iF1.className.includes(" Fact9")) { xFv9 = xFv9 + 1 ;} 		
+		if (iF2.className.includes(" Fact9")) { xFv9 = xFv9 + 2 ;} 		
+		if (iF4.className.includes(" Fact9")) { xFv9 = xFv9 + 4 ;} 		
+		if (iF8.className.includes(" Fact9")) { xFv9 = xFv9 + 8 ;} 		
+	}	
+
+  	//Fx.onclick = function(){ 	
+	function fTx2(){ 			
+			//var FAct2 = event.currentTarget.className;
+			//if ( FxAct.includes("act9")) {Tx.value = 1} else {iFx.value = 0} ;
+	}
+	
+	function fFx9() { 
+			//let vFnow = event.currentTarget;
+			//let F9ih = vFnow.innerHTML;			
+			//var vFnowv=0;
+			//if ( vFnow.className.includes("act9") ) { vFnowv=1} else {vFnowv=0}
+	}	
+		
+		
+	function ffn(){ 
+		//setTimeout(function() {fTout2(10);} ,50   )
+		//var fn2 = event.currentTarget
+		//
+		//setTimeout(function() { fn2.style.opacity="0"; }  ,1500  )
+	}
+		
+	 // Add click event to equal sign
+    //iSdgn.onclick = displayNum;
+    
+     // When: Clear button is pressed. Clear everything
+          
+     // Add click event to clear button , dont put above
+    
+
+  }()
+  );
+								// penulisan benar adalah: (funtion(){}())			
+								//*var v5c ini harus di declare sblm di panggil, 
+								//--jadi letaknya harus diatas tdk dibawah.		===> dibawah juga bisa kerja	
+								//*function di dalam bisa memangil yg  diluar
+								//*funtion di luar tidak bisa memanggil yg didalam
+								//*	V2.onclick = v5d;  bukan v5c() -> jika pakai() maka akan langsung process tanpa click;
+								// this.*?idclass*? tdk bisa di jalankan pada f() yg ke2  tp event.current target bs
+</script>
+</body>
+</html>
+
